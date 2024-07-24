@@ -4,8 +4,9 @@ echo 'Broker list '$1
 echo 'Workers list '$2
 
 
-brokers='s/localhost:9092'$1'/g'
+BROCKERS='s/localhost:9092'$1'/g'
 
+echo $BROCKERS
 rm -rf benchmark
 
 mkdir -p benchmark/drivers
@@ -13,7 +14,8 @@ mkdir -p benchmark/output
 
 cp drivers-kafka/*.yaml benchmark/drivers
 
-sed -i .bak $brokers benchmark/drivers/*.yaml
+sed -i .bak $BROCKERS benchmark/drivers/*.yaml
+
 rm benchmark/drivers/*.bak
 
 docker pull klimenkoiv/openmessaging-benchmark:latest
