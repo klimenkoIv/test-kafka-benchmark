@@ -4,7 +4,7 @@ echo 'Broker list '$1
 echo 'Workers list '$2
 
 
-brokers = 's/localhost:9092'$1'/g'
+brokers='s/localhost:9092'$1'/g'
 
 rm -rf benchmark
 
