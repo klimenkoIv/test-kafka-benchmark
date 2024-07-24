@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 echo 'Download image'
 docker pull klimenkoiv/openmessaging-benchmark:latest

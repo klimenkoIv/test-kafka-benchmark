@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 echo 'Broker list '$1
 echo 'Workers list '$2
