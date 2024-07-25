@@ -4,7 +4,7 @@ echo 'Broker list '$1
 echo 'Workers list '$2
 
 
-BROCKERS='s/localhost:9092/'$1'/g'
+BROCKERS="s/localhost:9092/'$1'/g"
 
 echo $BROCKERS
 rm -rf benchmark
@@ -14,13 +14,14 @@ mkdir -p benchmark/output
 
 cp drivers-kafka/*.yaml benchmark/drivers
 
-sed -i .bak $BROCKERS benchmark/drivers/*.yaml
+echo 'Apply replace stategy'
 
-rm benchmark/drivers/*.bak
+sed -i $BROCKERS benchmark/drivers/*.yaml
+
 
 docker pull klimenkoiv/openmessaging-benchmark:latest
 
-docker run --rm -v ./benchmark/drivers:/drivers -v ./benchmark/output:/output \
+docker run --rm -v ./benchmark/drivers:/drivers -v ./benchmark/output:/output -d \
 klimenkoiv/openmessaging-benchmark:latest bin/benchmark -o /output/ \
 --drivers /drivers/kafka-big-batches-gzip.yaml,/drivers/kafka-big-batches-lz4.yaml,/drivers/kafka-big-batches-snappy.yaml,\
 /drivers/kafka-big-batches-zstd.yaml,/drivers/kafka-big-batches.yaml,/drivers/kafka-compression-gzip.yaml,/drivers/kafka-compression-lz4.yaml,\
