@@ -19,29 +19,30 @@ echo 'Apply replace stategy'
 sed -i $BROCKERS benchmark/drivers/*.yaml
 
 
+
 docker pull klimenkoiv/openmessaging-benchmark:latest
 
-docker run --rm -v ./benchmark/drivers:/drivers -v ./benchmark/output:/output \
-klimenkoiv/openmessaging-benchmark:latest bin/benchmark -o /output/ \
---drivers /drivers/kafka-big-batches-gzip.yaml,/drivers/kafka-big-batches-lz4.yaml,/drivers/kafka-big-batches-snappy.yaml,\
-/drivers/kafka-big-batches-zstd.yaml,/drivers/kafka-big-batches.yaml,/drivers/kafka-compression-gzip.yaml,/drivers/kafka-compression-lz4.yaml,\
-/drivers/kafka-compression-snappy.yaml,/drivers/kafka-compression-zstd.yaml,/drivers/kafka-exactly-once.yaml,/drivers/kafka-latency.yaml,\
-/drivers/kafka-no-linger.yaml,/drivers/kafka-sync.yaml,/drivers/kafka-throughput.yaml \
---workers $2 \
-workloads/1-topic-1-partition-1kb.yaml workloads/500-topic-1kb-4p-4c-500k.yaml \
-workloads/1k-topic-1kb-4p-4c-2000k.yaml workloads/max-rate-1-topic-30-partitions-30p-30c-100b.yaml \
-workloads/1m-topic-1kb-4p-4c-500k.yaml workloads/max-rate-1-topic-100-partitions-1kb.yaml \
-workloads/max-rate-1-topic-20-partitions-20p-20c-64kb.yaml workloads/1m-10-topics-6-partitions-100b.yaml \
-workloads/max-rate-1-topic-1-partition-1p-1c-1kb.yaml workloads/1m-topic-1kb-4p-4c-2000k.yaml \ 
-workloads/max-rate-100-topics-1-partition-1kb.yaml workloads/max-rate-1-topic-50-partitions-50p-50c-1kb.yaml \
-workloads/900k-topic-1kb-4p-4c-2000k.yaml workloads/10k-topic-1kb-4p-4c-100k.yaml \
-workloads/1-topic-100-partitions-1kb-4p-4c-1000k.yaml workloads/max-rate-100-topics-1-partition-64kb.yaml \
-workloads/max-rate-1-topic-10-partitions-1p-1c-100b.yaml workloads/1-topic-10000-partitions-1kb-4p-4c-200k.yaml \
-workloads/max-rate-70-topics-1-partition-100b.yaml workloads/1-topic-10000-partitions-1kb-4p-4c-2000k.yaml \
-workloads/500k-topic-1kb-4p-4c-2000k.yaml workloads/100k-topic-1kb-4p-4c-500k.yaml \
-workloads/max-rate-80-topics-1-partition-100b.yaml workloads/max-rate-1-topic-30-partitions-30p-30c-1kb.yaml \
-workloads/max-rate-1-topic-1-partition-1p-1c-100b.yaml workloads/max-rate-1-topic-70-partitions-70p-70c-100b.yaml \
-workloads/1-topic-100-partitions-1kb-4p-4c-200k-backlog.yaml workloads/max-rate-90-topics-1-partition-1kb.yaml 
+# docker run --rm -v ./benchmark/drivers:/drivers -v ./benchmark/output:/output \
+# klimenkoiv/openmessaging-benchmark:latest bin/benchmark -o /output/ \
+# --drivers /drivers/kafka-big-batches-gzip.yaml,/drivers/kafka-big-batches-lz4.yaml,/drivers/kafka-big-batches-snappy.yaml,\
+# /drivers/kafka-big-batches-zstd.yaml,/drivers/kafka-big-batches.yaml,/drivers/kafka-compression-gzip.yaml,/drivers/kafka-compression-lz4.yaml,\
+# /drivers/kafka-compression-snappy.yaml,/drivers/kafka-compression-zstd.yaml,/drivers/kafka-exactly-once.yaml,/drivers/kafka-latency.yaml,\
+# /drivers/kafka-no-linger.yaml,/drivers/kafka-sync.yaml,/drivers/kafka-throughput.yaml \
+# --workers $2 \
+# workloads/1-topic-1-partition-1kb.yaml workloads/500-topic-1kb-4p-4c-500k.yaml \
+# workloads/1k-topic-1kb-4p-4c-2000k.yaml workloads/max-rate-1-topic-30-partitions-30p-30c-100b.yaml \
+# workloads/1m-topic-1kb-4p-4c-500k.yaml workloads/max-rate-1-topic-100-partitions-1kb.yaml \
+# workloads/max-rate-1-topic-20-partitions-20p-20c-64kb.yaml workloads/1m-10-topics-6-partitions-100b.yaml \
+# workloads/max-rate-1-topic-1-partition-1p-1c-1kb.yaml workloads/1m-topic-1kb-4p-4c-2000k.yaml \ 
+# workloads/max-rate-100-topics-1-partition-1kb.yaml workloads/max-rate-1-topic-50-partitions-50p-50c-1kb.yaml \
+# workloads/900k-topic-1kb-4p-4c-2000k.yaml workloads/10k-topic-1kb-4p-4c-100k.yaml \
+# workloads/1-topic-100-partitions-1kb-4p-4c-1000k.yaml workloads/max-rate-100-topics-1-partition-64kb.yaml \
+# workloads/max-rate-1-topic-10-partitions-1p-1c-100b.yaml workloads/1-topic-10000-partitions-1kb-4p-4c-200k.yaml \
+# workloads/max-rate-70-topics-1-partition-100b.yaml workloads/1-topic-10000-partitions-1kb-4p-4c-2000k.yaml \
+# workloads/500k-topic-1kb-4p-4c-2000k.yaml workloads/100k-topic-1kb-4p-4c-500k.yaml \
+# workloads/max-rate-80-topics-1-partition-100b.yaml workloads/max-rate-1-topic-30-partitions-30p-30c-1kb.yaml \
+# workloads/max-rate-1-topic-1-partition-1p-1c-100b.yaml workloads/max-rate-1-topic-70-partitions-70p-70c-100b.yaml \
+# workloads/1-topic-100-partitions-1kb-4p-4c-200k-backlog.yaml workloads/max-rate-90-topics-1-partition-1kb.yaml 
 
 
 # \
